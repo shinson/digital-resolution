@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <style>
 
@@ -10,21 +11,28 @@
             padding: 10%;
             font-family: 'Oswald', sans-serif;
         }
+        
+        h2
+        {
+        font-family: 'Satisfy', sans-serif;
+        font-size: 75px;
+        margin: 0px 0px;
+        }
 
         .pink {
-            background-color: #e54164;
+            background-color: #FF5AA9;
         }
 
-        .yellow {
-            background-color: #faa719;
+        .brown {
+            background-color: #99574B;
         }
 
-        .lightblue {
-            background-color: #7acdcc;
+        .lightgreen {
+            background-color: #BCFF9A;
         }
 
-        .darkblue {
-            background-color: #1c2e41;
+        .darkgreen {
+            background-color: #9CCC34;
         }
 
         #count {
@@ -54,16 +62,17 @@
 <body>
     <div class="resolutions">
 
+        <div id="resolution">
+            <h2>{{ resolution.text }}</h2>
+        </div>
+        <br>
+		<br>
         <div id="count">
         # {{ resolution_id }} out of {{ resolutions_count }}
         </div>
-
-        <div id="resolution">
-            {{ resolution.text }}
-        </div>
-
+		
         <div id="footer">
-            What's your #digitalresolution? Text yours to ###-###-####
+            Go and get em'
         </div>
 
     </div>
@@ -74,20 +83,18 @@
         $( document ).ready(function() {
 
             // Page refresh every 30s
-            window.setTimeout(function () { location.reload(true) }, 30000);
+            window.setTimeout(function () { location.reload(true) }, 3000);
 
             // Rotate through all of the logos for host groups
             var showLogo = Math.floor(Math.random() * 100);
 
             // 15% of the time, show a logo instead of a resolution
-            if (showLogo <= 15) {
+            if (showLogo <= 50) {
                 var logos = [
-                'http://shannonvturner.com/images/hearmecode_logo.png', // Hear Me Code
-                'http://shannonvturner.com/images/codeforprogress_logo.png', // Code for Progress
-                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/images/wwcdc.png', // Women Who Code
-                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/images/lwt.jpeg', // Lesbians Who Tech
-                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/images/ncwit.png', // GEMS/NCWIT
-                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/icons/dcft-full.png' // DCFemTech
+                'http://buymelaughs.com/wp-content/uploads/2013/12/Funny-Cats-Top-49-Most-Funniest-Grumpy-Cat-Quotes-1.jpg', // Grumpy Cat ppl
+                'http://buymelaughs.com/wp-content/uploads/2013/12/Funny-Cats-Top-49-Most-Funniest-Grumpy-Cat-Quotes-14.jpg', // Grumpy Cat santa
+                'https://s-media-cache-ak0.pinimg.com/736x/7a/7b/7f/7a7b7f1b4666763b1ca6f8ff69e7a785.jpg', // Grumpy Cat Lemons
+                'http://everydaygags.com/pics/21056-Grumpy+cat+eski+no.jpg', // Grumpy Cat eskimo
                 ]
                 var logo = logos[Math.floor(Math.random() * 6)];
                 $("#resolution").html("<img src='" + logo + "' class='logo'>");
@@ -95,7 +102,7 @@
             }
             else {
                 // Apply random background color class (.pink, .yellow, .lightblue, .darkblue) on load
-                var colors = ['pink', 'yellow', 'lightblue', 'darkblue'];
+                var colors = ['pink', 'brown', 'lightgreen', 'darkgreen'];
                 var color = colors[Math.floor(Math.random() * 4)];
                 $("body").addClass(color);
             }
